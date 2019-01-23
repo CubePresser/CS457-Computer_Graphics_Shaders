@@ -22,8 +22,9 @@ void
 
 main( )
 {
-    vec4 nv = uNoiseAmp * texture3D(Noise3, uNoiseFreq*vMCposition);
+    vec4 nv = texture3D(Noise3, uNoiseFreq*vMCposition);
     float n = (nv.r + nv.g + nv.b + nv.a) - 2.;
+    n *= uNoiseAmp;
 
     float Ar = uAd / 2.;
     float Br = uBd / 2.;
@@ -33,13 +34,15 @@ main( )
     int numins = int(s / uAd);
     int numint = int(t / uBd);
 
-    float s_c = (numins * uAd) + Ar;
-    float t_c = (numint * uBd) + Br;
+    float s_c = (float(numins) * uAd) + Ar;
+    float t_c = (float(numint) * uBd) + Br;
 
     float ds = s - s_c;
     float dt = t - t_c;
 
-    float scale = n / sqrt((ds*ds) + (dt*dt));
+    float oldDist = sqrt((ds*ds) + (dt*dt));
+    float newDist = n + oldDist;
+    float scale = newDist / oldDist;
 
     ds *= scale;
     ds /= Ar;
@@ -49,5 +52,7 @@ main( )
 
     float d = smoothstep( 1. - uTol, 1. + uTol, (ds * ds) + (dt * dt) );
 
-    gl_FragColor = mix(vec4(vLightIntensity * vColor.rgb, 1.), vec4(vLightIntensity * WHITE, 1.), d);
+    gl_FragColor = mix(vec4(vLightIntensity * vColor.rgb, 1.), vec4(vLightIntensity * WHITE, uAlpha), d);
+    if(gl_FragColor.a == 0)
+        discard;
 }
