@@ -2,4 +2,4 @@
 Theoretical and practical treatment of computer graphics shaders, including both RenderMan and GPU shaders. Programming in both RenderMan and OpenGL shading languages.
 
 # Run Instructions
-Open glman.exe then choose a .glib file from a project folder.
+Open glman.exe then load a .glib file from a project folder.
