@@ -14,14 +14,15 @@ uniform float uNoiseAmp, uNoiseFreq;
 vec4
 lighting()
 {
+    vec3 n = normalize(gl_NormalMatrix * normal);
     vec4 ambient, diffuse, spec;
 
     ambient = uKa * uColor;
-    diffuse = uKd * max(dot(normal, vLight), 0.) * uColor;
+    diffuse = uKd * max(dot(n, vLight), 0.) * uColor;
 
-    if(dot(normal, vLight) > 0.)
+    if(dot(n, vLight) > 0.)
     {
-        vec3 reflection = normalize(reflect(-vLight, normal));
+        vec3 reflection = normalize(reflect(-vLight, n));
         spec = uKs * pow(max(dot(vEye, reflection), 0.), uShininess) * uSpecularColor;
     }
 
