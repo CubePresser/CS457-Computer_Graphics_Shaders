@@ -1,0 +1,13 @@
+#version 330 compatibility
+
+in vec3  vMCposition;
+in float vLightIntensity;
+in vec2 vST;
+
+uniform vec4 uColor;
+
+void
+main( ) 
+{
+    gl_FragColor = vLightIntensity * uColor;
+}
