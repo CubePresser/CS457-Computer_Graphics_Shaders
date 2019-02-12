@@ -1,0 +1,51 @@
+##OpenGL GLIB
+
+Perspective 70
+LookAt 0 0 3  0 0 0  0 1 0
+
+Vertex texture.vert
+Fragment texture.frag
+Program Texture  TexUnit 6
+
+Texture2D  6  KelleyCube/kec.posx.bmp
+QuadYZ 5. 5. 10 10
+
+Texture2D  6  KelleyCube/kec.negx.bmp
+QuadYZ -5. 5. 10 10
+
+
+Texture2D  6  KelleyCube/kec.posy.bmp
+QuadXZ 5. 5. 10 10
+
+Texture2D  6  KelleyCube/kec.negy.bmp
+QuadXZ -5. 5. 10 10
+
+
+Texture2D  6  KelleyCube/kec.posz.bmp
+QuadXY 5. 5. 10 10
+
+Texture2D  6  KelleyCube/kec.negz.bmp
+QuadXY -5. 5. 10 10
+
+
+CubeMap 6 KelleyCube/kec.posx.bmp KelleyCube/kec.negx.bmp  KelleyCube/kec.posy.bmp KelleyCube/kec.negy.bmp   KelleyCube/kec.posz.bmp KelleyCube/kec.negz.bmp
+
+CubeMap 7 KelleyCube/kec.posx.bmp KelleyCube/kec.negx.bmp  KelleyCube/kec.posy.bmp KelleyCube/kec.negy.bmp   KelleyCube/kec.posz.bmp KelleyCube/kec.negz.bmp
+
+Vertex  	    cubereflect.vert
+Fragment        cubereflect.frag
+Program CubeReflect                                     \
+                uReflectUnit 6                          \
+                uRefractUnit 7                          \
+                uA <-1.0 0.00 1.0>                      \
+                uB <0.0 2.0 5.0>                        \
+                uC <0.0 0.0 12.56>                      \
+                uD <0. 0. 5.>                           \
+                uE <0. 0. 5.>                           \
+                uEta <0. 1.4 4.0>                       \
+                uNoiseAmp <0. 0. 5.>                    \
+                uNoiseFreq <0.1 1. 5.>                  \
+                uMix <0. 0. 1.>
+
+
+QuadXY  -0.2  1.  200 200
