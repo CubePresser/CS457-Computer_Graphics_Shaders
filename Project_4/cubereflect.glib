@@ -7,30 +7,30 @@ Vertex texture.vert
 Fragment texture.frag
 Program Texture  TexUnit 6
 
-Texture2D  6  KelleyCube/kec.posx.bmp
+Texture2D  6  ./KelleyCube/kec.posx.bmp
 QuadYZ 5. 5. 10 10
 
-Texture2D  6  KelleyCube/kec.negx.bmp
+Texture2D  6  ./KelleyCube/kec.negx.bmp
 QuadYZ -5. 5. 10 10
 
 
-Texture2D  6  KelleyCube/kec.posy.bmp
+Texture2D  6  ./KelleyCube/kec.posy.bmp
 QuadXZ 5. 5. 10 10
 
-Texture2D  6  KelleyCube/kec.negy.bmp
+Texture2D  6  ./KelleyCube/kec.negy.bmp
 QuadXZ -5. 5. 10 10
 
 
-Texture2D  6  KelleyCube/kec.posz.bmp
+Texture2D  6  ./KelleyCube/kec.posz.bmp
 QuadXY 5. 5. 10 10
 
-Texture2D  6  KelleyCube/kec.negz.bmp
+Texture2D  6  ./KelleyCube/kec.negz.bmp
 QuadXY -5. 5. 10 10
 
 
-CubeMap 6 KelleyCube/kec.posx.bmp KelleyCube/kec.negx.bmp  KelleyCube/kec.posy.bmp KelleyCube/kec.negy.bmp   KelleyCube/kec.posz.bmp KelleyCube/kec.negz.bmp
+CubeMap 6 ./KelleyCube/kec.posx.bmp ./KelleyCube/kec.negx.bmp  ./KelleyCube/kec.posy.bmp ./KelleyCube/kec.negy.bmp  ./KelleyCube/kec.posz.bmp ./KelleyCube/kec.negz.bmp
 
-CubeMap 7 KelleyCube/kec.posx.bmp KelleyCube/kec.negx.bmp  KelleyCube/kec.posy.bmp KelleyCube/kec.negy.bmp   KelleyCube/kec.posz.bmp KelleyCube/kec.negz.bmp
+CubeMap 7 ./KelleyCube/kec.posx.bmp ./KelleyCube/kec.negx.bmp  ./KelleyCube/kec.posy.bmp ./KelleyCube/kec.negy.bmp  ./KelleyCube/kec.posz.bmp ./KelleyCube/kec.negz.bmp
 
 Vertex  	    cubereflect.vert
 Fragment        cubereflect.frag
