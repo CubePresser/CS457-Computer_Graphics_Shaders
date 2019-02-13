@@ -1,11 +1,11 @@
 #version 330 compatibility
 
 in vec3  vMCposition;
+in vec3  vECposition;
 in vec3  vSurfaceNormal;
-in vec2  vST;
 
-uniform int uReflectUnit;
-uniform int uRefractUnit;
+uniform samplerCube uReflectUnit;
+uniform samplerCube uRefractUnit;
 uniform float uEta;
 uniform sampler3D Noise3; //3D noise textureuniform sampler3D Noise3
 uniform float uNoiseAmp, uNoiseFreq;
@@ -45,5 +45,15 @@ RotateNormal( vec3 n )
 void
 main( ) 
 {
-    gl_FragColor = vec4(1., 1., 1., 1.);
+    vec3 WHITE = vec3( 1.,1.,1. );
+    vec3 Normal = normalize(vSurfaceNormal);
+    Normal = RotateNormal(Normal);
+
+    vec3 reflectVector = reflect( vECposition, Normal );
+	vec3 reflectcolor = textureCube(uReflectUnit, reflectVector ).rgb;
+	vec3 refractVector = refract( vECposition, Normal, uEta );
+	vec3 refractcolor = textureCube( uRefractUnit, refractVector ).rgb;
+
+	refractcolor = mix( refractcolor, WHITE, 0.30 );
+	gl_FragColor = vec4( mix( reflectcolor, refractcolor, uMix ),  1. );
 }

@@ -3,8 +3,8 @@
 #define M_PI 3.14159
 
 out vec3  vMCposition;
+out vec3  vECposition;
 out vec3  vSurfaceNormal;
-out vec2  vST;
 
 // Wave deformation equation constants
 uniform float uA, uB, uC, uD, uE;
@@ -33,15 +33,12 @@ getSurfaceNormal( vec3 vertex )
 	vec3 Ty = vec3(0., 1., dzdy );
 
 	//Generate normal vector using the cross product between the two tangent vectors
-	return normalize( cross( Tx, Ty ) );
+	return normalize(cross( Tx, Ty ));
 }
 
 void
 main( )
 {
-    //Get ST coordinates
-	vST = gl_MultiTexCoord0.st;
-
 	//Calculate new vertex position
     float x, y, z, w;
     x = gl_Vertex.x;
@@ -52,6 +49,7 @@ main( )
 	vec4 vertex = vec4(x, y, z, w);
 
 	vMCposition  = vertex.xyz;
+	vECposition  = (gl_ModelViewMatrix * vertex).xyz;
 
     vSurfaceNormal = normalize(gl_NormalMatrix * getSurfaceNormal(vertex.xyz));
 	gl_Position = gl_ModelViewProjectionMatrix * vertex;
