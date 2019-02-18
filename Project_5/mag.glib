@@ -9,8 +9,7 @@ Fragment mag.frag
 Program  Mag						\
 	uScenter <0. .5 1.>				\
 	uTcenter <0. .5 1.>				\
-	uDs      <0.01 .1 .5>				\
-	uDt      <0.01 .1 .5>				\
+	uR      <0.01 .1 .5>				\
 	uMagFactor <.1 1. 25.>				\
 	uRotAngle <-3.14159 0. 3.14159>			\
 	uSharpFactor <0. 1. 5.>				\

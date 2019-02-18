@@ -4,8 +4,7 @@ uniform sampler2D uTexUnit;
 
 uniform float uScenter;
 uniform float uTcenter;
-uniform float uDs;
-uniform float uDt;
+uniform float uR;
 uniform float uMagFactor;
 uniform float uRotAngle;
 uniform float uSharpFactor;
@@ -15,12 +14,10 @@ in vec2 vST;
 void main ( ) {
     vec2 st = vST;
 
-    //Check if st is inside of magic window rectangle
-    if(
-        (uScenter - uDs <= st.s && st.s <= uScenter + uDs)
-        &&
-        (uTcenter - uDt <= st.t && st.t <= uTcenter + uDt)
-    ) {
+    float sDist = st.s - uScenter;
+    float tDist = st.t - uTcenter;
+    //Check if st is inside of magic window circle
+    if( (sDist * sDist) + (tDist * tDist) <= (uR * uR) ) {
         //Respect to center
         st.s -= uScenter;
         st.t -= uTcenter;
