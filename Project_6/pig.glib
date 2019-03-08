@@ -1,0 +1,12 @@
+##OpenGL GLIB
+Perspective 70
+LookAt 0 0 3  0 0 0  0 1 0
+
+Texture2D 5 lava.bmp
+
+Vertex   pig.vert
+Fragment pig.frag
+Program  Pig						\
+	uTexUnit  5
+
+Obj pigY1.obj
