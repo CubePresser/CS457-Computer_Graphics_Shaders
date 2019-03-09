@@ -1,0 +1,14 @@
+##OpenGL GLIB
+Perspective 70
+LookAt  0 0 3     0 0 0    0 1 0
+
+Vertex   lego.vert
+Geometry lego.geom
+Fragment lego.frag
+Program Lego  				\
+	uModelCoords <true>		\
+	uLevel <0 3 3>			\
+	uQuantize <2. 50. 50.>
+
+Teapot
+#Obj pigY1.obj
