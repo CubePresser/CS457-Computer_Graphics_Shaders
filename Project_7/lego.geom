@@ -44,9 +44,9 @@ void ProduceVertex(float s, float t) {
 
     //Get new vertex
     vec3 v = V0 + (s*V01) + (t*V02);
-    if(uModelCoords) v = (gl_ModelViewMatrix * vec4(v, 1.)).xyz;
-    v = QuantizeVec3(v);
     if(!uModelCoords) v = (gl_ModelViewMatrix * vec4(v, 1.)).xyz;
+    v = QuantizeVec3(v);
+    if(uModelCoords) v = (gl_ModelViewMatrix * vec4(v, 1.)).xyz;
 
     //Update gLightIntensity
     gLightIntensity = abs(dot(normalize(LIGHTPOS - v), n));

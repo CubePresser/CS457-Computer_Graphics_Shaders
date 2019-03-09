@@ -1,9 +1,7 @@
-#version 400 core
-
-uniform vec3 uColor;
+#version 400
 
 in float gLightIntensity;
 
 void main() {
-    gl_FragColor = vec4(gLightIntensity * uColor, 1.);
+    gl_FragColor = vec4(gLightIntensity * vec3(1.00, 0.65, 0.40), 1.);
 }

@@ -8,7 +8,7 @@ Fragment lego.frag
 Program Lego  				\
 	uModelCoords <true>		\
 	uLevel <0 3 3>			\
-	uQuantize <2. 50. 50.>		\
-	uColor { 1.00 0.65 0.40 }
+	uQuantize <2. 50. 50.>
 
-Obj pigY1.obj
+Teapot
+#Obj pigY1.obj
