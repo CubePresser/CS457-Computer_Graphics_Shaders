@@ -1,0 +1,26 @@
+##OpenGL GLIB
+
+Perspective 70
+LookAt 0 0 3  0 0 0  0 1 0
+
+Vertex  	    wave.vert
+Fragment        wave.frag
+Program CubeReflect                                     \
+                uX1 <-1.0, 0.00, 1.0>                   \
+                uY1 <-1.0, 0.00, 1.0>                   \
+                uAmp1 <0.0 0.00 .1>                   \
+                uFreq1 <0.0 4.0 5.0>                    \
+                uDecay1 <0. 0. 5.>                      \
+                uX2 <-1.0, -1.00, 1.0>                   \
+                uY2 <-1.0, -1.00, 1.0>                   \
+                uAmp2 <0.0 0.00 .1>                   \
+                uFreq2 <0.0 2.0 5.0>                    \
+                uDecay2 <0. 0. 5.>                      \
+                uX3 <-1.0, 1.00, 1.0>                   \
+                uY3 <-1.0, 1.00, 1.0>                   \
+                uAmp3 <0.0 0.00 .1>                   \
+                uFreq3 <0.0 3.0 5.0>                    \
+                uDecay3 <0. 0. 5.>                      \
+
+
+QuadXY  -0.2  1.  200 200
