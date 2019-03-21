@@ -107,6 +107,22 @@ GLfloat sAmp;
 GLfloat sFreq;
 GLfloat sDecay;
 
+struct WaveInfo {
+	GLfloat s;
+	GLfloat t;
+	GLfloat amp;
+	GLfloat freq;
+	GLfloat decay;
+	float upTime;
+};
+
+struct Node {
+	WaveInfo value;
+	Node* next;
+};
+
+Node* waveHead = NULL;
+
 //Animation times
 int animate_start_time; //Log the time in which animation starts so simulation time is essentially starting at t=0
 int time_frozen;
@@ -213,6 +229,14 @@ void Animate( )
 		float seconds = ((float)(glutGet(GLUT_ELAPSED_TIME) - animate_start_time) / 1000.f);
 		float dt = seconds - Time;
 		Time = seconds;
+
+		Node* temp = waveHead;
+		int i = 0;
+		while (temp != NULL && i < 5) {
+			i++;
+			temp->value.upTime += dt;
+			temp = temp->next;
+		}
 	}
 
 	// force a call to Display( ) next time it is convenient:
@@ -221,10 +245,38 @@ void Animate( )
 	glutPostRedisplay( );
 }
 
+void addWave() {
+	Node* newNode = new Node();
+	newNode->value.s = sS;
+	newNode->value.t = sT;
+	newNode->value.amp = sAmp;
+	newNode->value.freq = sFreq;
+	newNode->value.decay = sDecay;
+	newNode->value.upTime = 0.;
+	newNode->next = waveHead;
+	waveHead = newNode;
+	printf("Added a wave!\n");
+}
+
+void printWaveInfo(WaveInfo w) {
+	printf("WAVE INFORMATION:\n\ts : %f\n\tt : %f\n\tAmplitude : %f\n\tFrequency : %f\n\tDecay : %f\n\tUp Time : %f\n",
+		w.s, w.t, w.amp, w.freq, w.decay, w.upTime);
+}
+
 void Buttons(int id)
 {
+	Node* temp = waveHead;
+	int i = 0;
 	switch (id)
 	{
+	case WAVE:
+		addWave();
+		while (temp != NULL && i < 5) {
+			i++;
+			printWaveInfo(temp->value);
+			temp = temp->next;
+		}
+		break;
 	case PLAY:
 		play = !play;
 		Frozen = !Frozen;
